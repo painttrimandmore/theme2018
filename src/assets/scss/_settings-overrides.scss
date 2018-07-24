@@ -1,0 +1,22 @@
+$foundation-palette: (
+	primary: #3063af,
+	secondary: #f8981d,
+	tertiary: #96d021,
+	success: #3adb76,
+	warning: #ffae00,
+	alert: #cc4b37,
+);
+
+@include add-foundation-colors();
+
+$tertiary-color: map-get($foundation-palette, tertiary) !global;
+
+$topbar-background: transparent;
+$topbar-submenu-background: $primary-color;
+
+// It is supposed to be transparent, but it makes it a gray for some reason
+$dropdown-menu-item-background-active: darken( $primary-color, 10% );
+
+$titlebar-background: transparent;
+
+$offcanvas-background: $primary-color;

@@ -1,0 +1,133 @@
+.footer-container {
+	margin: 0 auto;
+	background-color: $primary-color;
+	overflow: hidden;
+}
+
+.footer {
+
+	padding: rem-calc(30) 0;
+	position: relative;
+
+	.footer-content {
+		position: relative;
+	}
+
+	section {
+		@include xy-cell(auto);
+	}
+
+	ul {
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.footer-widgets {
+
+		&, * {
+			color: #fff;
+		}
+
+		a:hover, a:active {
+			color: scale-color( #fff, -14% );
+		}
+
+		@include light-or-dark-text( $primary-color );
+
+		padding-bottom: 30px * 2;
+
+		.widget-title {
+			@include light-or-dark-text( $primary-color );
+			margin-top: 0.9677em;
+			margin-bottom: 0.9677em;
+		}
+
+		.gform_title, .gfield_label, label, .gfield_description, .ginput_counter, .gform_wrapper .gfield_required {
+			@include light-or-dark-text( $primary-color );
+		}
+
+		input[type="submit"] {
+
+			display: block !important;
+			width: 100% !important;
+
+			@include button( false, $secondary-color, scale-color( $secondary-color, $lightness: -15% ), 'auto', 'solid' );
+
+			border-width: 0.25em;
+			border-color: $secondary-color;
+
+			@include foundation-button-fix( $secondary-color );
+
+			&:hover, &:focus {
+
+				background: #fff;
+				color: $secondary-color;
+				border-width: 0.25em;
+
+			}
+
+		}
+
+		a {
+
+			color: #fff;
+			text-decoration: underline;
+
+			&:hover {
+				color: scale-color( $secondary-color, $lightness: 15% );
+				text-decoration: none;
+			}
+
+		}
+
+		&, a {
+			font-weight: bold;
+		}
+
+	}
+
+	.menu {
+
+		list-style: none;
+		margin-bottom: 0;
+		display: inline;
+		
+		li {
+			display: block;
+		}
+
+		a {
+
+			color: #fff;
+			font-size: 1rem !important; // This is not a mega menu. Get your styling out of here
+
+			&:hover {
+				color: scale-color( $secondary-color, $lightness: 15% );
+			}
+
+		}
+
+	}
+
+	.copyright {
+
+		&, * {
+			color: #fff;
+		}
+
+		.svg-container {
+			svg {
+				fill: #000;
+			}
+		}
+
+		.text {
+			//padding: 0.7rem 1rem;
+			position: relative;
+			//top: -0.6rem;
+		}
+
+	}
+
+}

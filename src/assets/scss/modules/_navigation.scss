@@ -1,0 +1,190 @@
+// Navigation breakpoints
+.mobile-menu,
+.site-title-bar {
+  @include hide-for(medium);
+}
+
+.sticky-top-bar {
+	
+	background-color: $primary-color;
+	
+}
+
+.desktop-menu,
+.site-navigation .top-bar-left {
+  @include show-for(medium);
+}
+
+// Site title
+.site-desktop-title a {
+  font-weight: bold;
+}
+
+// Mobile menu
+.mobile-menu {
+  display: none; // prevents repaint caused by JS hiding menu onload
+}
+
+.off-canvas {
+  > ul.menu {
+    height: 100vh;
+    padding: 1rem;
+
+    a {
+      color: $white;
+      font-weight: 600;
+      font-size: rem-calc(15);
+    }
+  }
+
+  .menu .active > a { background-color: #ccc; }
+
+}
+
+.title-bar-title {
+  a {
+    font-size: 1rem;
+    color: #B9B9B9;
+  }
+}
+
+.mobile-menu,
+.mobile-off-canvas-menu {
+
+  .menu .is-active > a {
+    background-color: lighten($secondary-color, 5%);
+  }
+}
+
+// Tablet and desktop menu
+
+.top-bar {
+
+  .top-bar-title a {
+    font-size: 1rem;
+    color: #B9B9B9;
+    line-height: 1.8;
+  }
+
+  .menu a {
+    color: #e6e6e6;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: bold;
+    font-size: 0.8rem;
+    line-height: 1;
+
+    &:hover:not(.button) {
+      background-color: $secondary-color;
+    }
+  }
+
+  .menu .active > a { background-color: #ccc; }
+
+  .menu>li:not(.menu-text)>a { padding: 1rem; }
+
+  .dropdown.menu .submenu { border: 0; }
+  .dropdown.menu .has-submenu.is-down-arrow a { padding-right: 1rem; }
+  .dropdown.menu .has-submenu.is-down-arrow > a::after { border: 0; }
+  .dropdown.menu:first-child > li.is-dropdown-submenu-parent > a::after { display: none; }
+}
+
+.site-navigation {
+  @include breakpoint(small only) {
+    padding: 0; // prevents container visibility on small screens
+  }
+}
+
+// WP post navigation
+.post-navigation {
+  @include clearfix;
+}
+
+.nav-previous {
+  float:left;
+}
+
+.nav-next {
+  float:right;
+}
+
+.svg-container.logo {
+	
+	svg {
+		
+		#text {
+			
+			path {
+				fill: $white !important;
+			}
+			
+		}
+		
+		#shape {
+			
+			path {
+				fill: $tertiary-color !important;
+			}
+			
+		}
+		
+	}
+	
+}
+
+@include breakpoint(small only) {
+
+  .title-bar {
+
+    .svg-container svg {
+      width: 75%;
+      margin-top: 1rem;
+      margin-left: 1rem;
+    }
+    
+    .menu-icon {
+      margin-left: 0.75rem;
+      margin-top: 2.5rem;
+    }
+
+  }
+	
+	.admin-bar {
+	
+		.off-canvas-content {
+			
+			.sticky-top-bar {
+
+				margin-top: 2.9em !important;
+
+			}
+			
+			&.is-open-left {
+			
+				.sticky-top-bar {
+
+					margin-top: 0 !important;
+
+				}
+				
+			}
+			
+		}
+		
+	}
+
+}
+
+@include breakpoint(medium) {
+	
+	.top-bar {
+
+		.svg-container svg {
+			width: 75%;
+			margin-top: 1rem;
+			margin-left: 1rem;
+		}
+		
+	}
+	
+}

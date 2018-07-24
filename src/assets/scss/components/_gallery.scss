@@ -1,0 +1,12 @@
+.gallery {
+	
+	div.gallery-icon {
+		text-align: center;
+	}
+
+	figcaption.gallery-caption {
+		@extend h5;
+		text-align: center;
+	}
+
+}

@@ -1,0 +1,34 @@
+.home {
+	
+	.tagline {
+		
+		
+		
+	}
+	
+	.portfolio-loop {
+		
+		width: 100%;
+
+		#portfolio-gallery {
+
+			margin: auto;
+
+			.gallery-item {
+				margin-top: 10px;
+				text-align: center;
+			}
+
+			img {
+				border: 2px solid #cfcfcf;
+			}
+
+			.gallery-caption {
+				margin-left: 0;
+			}
+
+		}
+		
+	}
+
+}

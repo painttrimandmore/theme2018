@@ -2,11 +2,7 @@
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: auto;
-
-	@include breakpoint(medium) {
-		height: rem-calc(200);
-	}
+	height: rem-calc(200);
 
 	@include breakpoint(xlarge) {
 		height: rem-calc(400);
@@ -18,13 +14,11 @@
 
 		*, .page-title {
 			color: #fff;
-			font-weight: 700;
 		}
 		
 		@include breakpoint( medium ) {
 
 			.page-title {
-				font-weight: normal;
 				font-size: 5rem;
 			}
 			
@@ -35,10 +29,18 @@
 		}
 
 		@include breakpoint(small) {
+			
 			margin-top: 0;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
+			
 		}
 		
-		padding-top: 0;
+		@include breakpoint( small only ) {
+			.page-title {
+				font-size: rem-calc( map-get-deep( $header-styles, 'medium', 'h2', 'font-size' ) );
+			}
+		}
 		
 		@include breakpoint(medium) {
 			padding-top: 8rem;

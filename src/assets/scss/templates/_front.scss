@@ -9,34 +9,6 @@
 		
 	}
 	
-	.hero-logos {
-			
-		text-align: center;
-		position: relative;
-		padding-top: 1.5rem;
-
-		.logo-image-contianer {
-			display: inline-block;
-		}
-
-		@include breakpoint( medium ) {
-
-			position: absolute;
-			top: 0;
-			right: 0;
-			text-align: right;
-			padding-top: 0;
-
-			.logo-image-container {
-
-				display: block;
-
-			}
-
-		}
-
-	}
-	
 	.portfolio-loop {
 		
 		width: 100%;

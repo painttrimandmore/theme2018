@@ -16,7 +16,12 @@
 		<div class="footer-content">
 
 			<div class="row">
-				<div class="small-12 columns copyright text-right">
+				
+				<div class="small-12 medium-6 columns footer widgets">
+					<?php dynamic_sidebar( 'footer-widgets' ); ?>
+				</div>
+				
+				<div class="small-12 medium-6 columns copyright text-right">
 					<span class="text">
 						<?php echo sprintf( __( '&copy; %s %s', 'paint-trim-and-more-theme' ), date( 'Y' ), get_bloginfo( 'name' ) ); ?>
 						<br />

@@ -10,7 +10,11 @@
 	position: relative;
 
 	.footer-content {
-		position: relative;
+		
+		& > .row {
+			position: relative;
+		}
+		
 	}
 
 	section {
@@ -111,6 +115,10 @@
 	}
 
 	.copyright {
+		
+		position: absolute;
+		bottom: 0;
+		right: 0;
 
 		&, * {
 			color: #fff;

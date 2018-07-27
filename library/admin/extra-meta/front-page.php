@@ -42,7 +42,7 @@ function ptam_is_editing_home() {
  */
 function ptam_remove_home_supports() {
 	
-	remove_post_type_support( 'page', 'editor' );
+	//remove_post_type_support( 'page', 'editor' );
     
 }
 

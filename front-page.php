@@ -20,10 +20,16 @@ endwhile;
 <div class="main-content">
 	
 	<div class="main-wrap full-width">
-
-		<div class="portfolio-loop row">
+		
+		<div class="row expanded">
 			
-			<div class="small-12 columns">
+			<div class="small-12 medium-6 columns">
+				<?php the_content(); ?>
+			</div>
+
+			<div class="small-12 medium-6 columns">
+				
+				<div class="portfolio-loop">
 
 				<?php 
 
@@ -35,7 +41,7 @@ endwhile;
 					) );
 
 					$image_size = 'medium';
-					$columns = 4;
+					$columns = 2;
 
 					// Modified [gallery] shortcode
 					if ( $portfolio_loop->have_posts() ) : ?>
@@ -47,7 +53,7 @@ endwhile;
 						<?php while ( $portfolio_loop->have_posts() ) : $portfolio_loop->the_post(); ?>
 
 							<?php if ( ! has_post_thumbnail() ) continue; ?>
-							
+
 							<div class="column column-block">
 
 								<figure class="gallery-item">
@@ -79,7 +85,7 @@ endwhile;
 									</figcaption>
 
 								</figure>
-								
+
 							</div>
 
 						<?php endwhile; ?>
@@ -87,7 +93,11 @@ endwhile;
 						</div>
 
 					<?php endif; ?>
-				
+					
+				</div>
+
+				</div>
+			
 			</div>
 
 		</div>

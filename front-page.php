@@ -5,9 +5,19 @@
  * @package PaintTrimAndMoreTheme2018
  */
 
+add_action( 'painttrimmore_after_page_title', 'painttrimmore_frontpage_requestquotelink' );
+
+function painttrimmore_frontpage_requestquotelink() {
+    ?>
+    <a href="#request-quote" class="button large">
+        Request a Quote
+    </a>
+    <?php
+}
+
 global $post;
 
-get_header(); 
+get_header();
 
 while ( have_posts() ) : the_post();
 
@@ -17,95 +27,101 @@ endwhile;
 
 ?>
 
-<div class="main-content">
-	
-	<div class="main-wrap full-width">
-		
-		<div class="row expanded">
-			
-			<div class="small-12 medium-6 columns">
-				<?php the_content(); ?>
-			</div>
+    <div class="main-content">
 
-			<div class="small-12 medium-6 columns">
-				
-				<div class="portfolio-loop">
+        <div class="main-wrap full-width">
 
-				<?php 
+            <div class="row expanded">
 
-					$portfolio_loop = new WP_Query( array(
-						'post_type' => 'portfolio',
-						'posts_per_page' => -1,
-						'orderby' => 'menu_order',
-						'order' => 'ASC',
-					) );
+                <div class="small-12 medium-6 columns">
+					<?php the_content(); ?>
+                </div>
 
-					$image_size = 'medium';
-					$columns = 2;
+                <div class="small-12 medium-6 columns">
 
-					// Modified [gallery] shortcode
-					if ( $portfolio_loop->have_posts() ) : ?>
+                    <div class="portfolio-loop">
 
-						<h2><?php _e( 'Our Portfolio', 'paint-trim-and-more-theme' ); ?></h2>
+						<?php
 
-						<div id="portfolio-gallery" class="gallery gallery-columns-<?php echo $columns; ?> gallery-size-<?php echo $image_size; ?> row small-up-2 medium-up-<?php echo $columns; ?>">
+						$portfolio_loop = new WP_Query( array(
+							'post_type'      => 'portfolio',
+							'posts_per_page' => - 1,
+							'orderby'        => 'menu_order',
+							'order'          => 'ASC',
+						) );
 
-						<?php while ( $portfolio_loop->have_posts() ) : $portfolio_loop->the_post(); ?>
+						$image_size = 'medium';
+						$columns    = 2;
 
-							<?php if ( ! has_post_thumbnail() ) continue; ?>
+						// Modified [gallery] shortcode
+						if ( $portfolio_loop->have_posts() ) : ?>
 
-							<div class="column column-block">
+                            <h2><?php _e( 'Our Portfolio', 'paint-trim-and-more-theme' ); ?></h2>
 
-								<figure class="gallery-item">
+                            <div id="portfolio-gallery"
+                                 class="gallery gallery-columns-<?php echo $columns; ?> gallery-size-<?php echo $image_size; ?> row small-up-2 medium-up-<?php echo $columns; ?>">
 
-									<?php 
+								<?php while ( $portfolio_loop->have_posts() ) : $portfolio_loop->the_post(); ?>
 
-										$attachment_id = get_post_thumbnail_id();
-										$image_meta = wp_get_attachment_metadata( $attachment_id );
+									<?php if ( ! has_post_thumbnail() ) {
+										continue;
+									} ?>
 
-										$orientation = '';
-										if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
-											$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-										}
+                                    <div class="column column-block">
 
-									?>
+                                        <figure class="gallery-item">
 
-									<div class='gallery-icon <?php echo $orientation; ?>'>
-										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark">
-											<?php the_post_thumbnail( $image_size, array(
-												'aria-describedby' => 'portfolio-gallery-' . get_the_ID()
-											) ); ?>
-										</a>
-									</div>
+											<?php
 
-									<figcaption class="wp-caption-text gallery-caption" id="portfolio-gallery-<?php echo get_the_ID(); ?>">
-										<a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" rel="bookmark">
-											<?php echo wptexturize( get_the_title() ); ?>
-										</a>
-									</figcaption>
+											$attachment_id = get_post_thumbnail_id();
+											$image_meta    = wp_get_attachment_metadata( $attachment_id );
 
-								</figure>
+											$orientation = '';
+											if ( isset( $image_meta['height'], $image_meta['width'] ) ) {
+												$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+											}
 
-							</div>
+											?>
 
-						<?php endwhile; ?>
+                                            <div class='gallery-icon <?php echo $orientation; ?>'>
+                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"
+                                                   rel="bookmark">
+													<?php the_post_thumbnail( $image_size, array(
+														'aria-describedby' => 'portfolio-gallery-' . get_the_ID()
+													) ); ?>
+                                                </a>
+                                            </div>
 
-						</div>
+                                            <figcaption class="wp-caption-text gallery-caption"
+                                                        id="portfolio-gallery-<?php echo get_the_ID(); ?>">
+                                                <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"
+                                                   rel="bookmark">
+													<?php echo wptexturize( get_the_title() ); ?>
+                                                </a>
+                                            </figcaption>
 
-					<?php endif; ?>
-					
-				</div>
+                                        </figure>
 
-				</div>
-			
-			</div>
+                                    </div>
 
-		</div>
-		
-	</div>
-	
-</div>
+								<?php endwhile; ?>
 
-<?php 
+                            </div>
+
+						<?php endif; ?>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </div>
+
+<?php
 
 get_footer();

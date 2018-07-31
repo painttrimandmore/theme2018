@@ -96,6 +96,32 @@ function ptam_get_phone_number_link( $phone_number, $extension = false, $link_te
     
 }
 
+function ptam_get_email_link( $email, $extension = false, $link_text = '', $email_icon = false ) {
+
+	$trimmed_email = preg_replace( '/\D/', '', trim( $email ) );
+
+	$email_link = 'mailto:' . $trimmed_email;
+
+	if ( $link_text == '' ) {
+
+		$link_text = $email;
+
+		if ( ( $extension !== false ) && ( $extension !== '' ) ) {
+			$link_text = $link_text . __( ' x ', 'paint-trim-and-more-theme' ) . $extension;
+		}
+
+	}
+
+	if ( ( $extension !== false ) && ( $extension !== '' ) ) {
+		$email_link = $email_link . ',' . $extension;
+	}
+
+	if ( $email_icon ) $email_icon = '<i class="fas fa-envelope"></i> ';
+
+	return "<a href='{$email_link}' class='phone-number-link'>{$email_icon}{$link_text}</a>";
+
+}
+
 
 /**
  * Conditionally Add Account or Login Links to the Menu
@@ -108,9 +134,10 @@ function ptam_get_phone_number_link( $phone_number, $extension = false, $link_te
  */
 add_filter( 'wp_nav_menu_items', 'ptam_conditional_menu_items', 10, 2 );
 function ptam_conditional_menu_items( $items, $args ) {
-    
-    $items .= '<li>' . ptam_get_phone_number_link( get_theme_mod( 'ptam_phone_number', '(517) 740-1999' ), false, false, true ) . '</li>';
-    
+
+	$items .= '<li>' . ptam_get_phone_number_link( get_theme_mod( 'ptam_phone_number', '(517) 740-1999' ), false, false, true ) . '</li>';
+	$items .= '<li>' . ptam_get_email_link( get_theme_mod( 'ptam_email', 'info@painttrimmore.com' ), false, false, true ) . '</li>';
+
     return $items;
     
 }

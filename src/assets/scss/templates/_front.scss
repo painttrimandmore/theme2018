@@ -1,37 +1,45 @@
 .home {
-	
-	
-	.featured-hero {
-		
-		position: relative;
-		overflow: visible;
-		display: block;
-		
-	}
-	
-	.portfolio-loop {
-		
-		width: 100%;
 
-		#portfolio-gallery {
+  .featured-hero {
 
-			margin: auto;
+    position: relative;
+    overflow: visible;
+    display: block;
+    height: rem-calc(300);
 
-			.gallery-item {
-				margin-top: 10px;
-				text-align: center;
-			}
+    @include breakpoint(medium) {
+      height: rem-calc(400);
+    }
 
-			img {
-				border: 2px solid #cfcfcf;
-			}
+    @include breakpoint(large) {
+      height: rem-calc(500);
+    }
 
-			.gallery-caption {
-				margin-left: 0;
-			}
+  }
 
-		}
-		
-	}
+  .portfolio-loop {
+
+    width: 100%;
+
+    #portfolio-gallery {
+
+      margin: auto;
+
+      .gallery-item {
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      img {
+        border: 2px solid #cfcfcf;
+      }
+
+      .gallery-caption {
+        margin-left: 0;
+      }
+
+    }
+
+  }
 
 }
